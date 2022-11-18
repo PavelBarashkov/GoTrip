@@ -1,18 +1,26 @@
+// Carousel
 $(document).ready(function(){
     $(".owl-carousel").owlCarousel();
   });
-
 
 
   var owl = $('.owl-carousel');
 owl.owlCarousel({
     center: true,
     loop: true,/*Чтоб зациклить */
-    margin: 30,
+    margin: 20,
 
     startPosition: 1, /*какой элемент будет активный*/
-    items: 3,
-});
+    items: 1,//Количество слайдов
+    responsive : {
+        540: {
+            items: 3,
+        },
+        1200: {
+            margin: 30,
+            items: 3,
+        },
+}})
 
 // Go to the next item
 $('.slider_btn--next').click(function() {
@@ -25,3 +33,14 @@ $('.slider_btn--prev').click(function() {
     // Parameters has to be in square bracket '[]'
     owl.trigger('prev.owl.carousel');
 })
+
+// Nav icon
+const navBtn = document.querySelector('.nav__toggle');
+const nav = document.querySelector('.nav');
+const menuIcon = document. querySelector('.menu-icon');
+
+navBtn.onclick = function() {
+    nav.classList.toggle('nav--mobile'),
+    menuIcon.classList.toggle('menu-icon--active'),
+    document.body.classList.toggle('no-scroll');
+};
